@@ -48,6 +48,10 @@ app.use(subjectsRoutes);
 app.use(termsRoutes);
 app.use(usersRoutes);
 
+app.get("/hello", (req, res) => {
+  res.json({ msg: "Hello World" });
+});
+
 app.all("*", async (req, res, next) => {
   throw new NotFoundError("Route");
 });
