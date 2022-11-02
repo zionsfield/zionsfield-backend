@@ -10,7 +10,20 @@ import { getTerms } from "../services/terms.service";
 
 const setupClasses = async () => {
   const classes = await ClassModel.find({});
-  const classNames = ["JSS 1", "JSS 2", "JSS 3", "SSS 1", "SSS 2", "SSS 3"];
+  const classNames = [
+    "Primary 1",
+    "Primary 2",
+    "Primary 3",
+    "Primary 4",
+    "Primary 5",
+    "Primary 6",
+    "JSS 1",
+    "JSS 2",
+    "JSS 3",
+    "SSS 1",
+    "SSS 2",
+    "SSS 3",
+  ];
   if (classes.length === 0) {
     classNames.forEach(async (className, i) => {
       await ClassModel.build({
@@ -23,7 +36,15 @@ const setupClasses = async () => {
 
 const setupSubjects = async () => {
   const subjects = await SubjectModel.find({});
-  const subjectNames = ["Mathematics", "English"];
+  const subjectNames = [
+    "Mathematics",
+    "English",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "Economics",
+    "Marketing",
+  ];
   if (subjects.length === 0) {
     subjectNames.forEach(async (name) => {
       await SubjectModel.build({
