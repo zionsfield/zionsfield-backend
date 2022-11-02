@@ -2,7 +2,7 @@
   "name": "zionsfield-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "dev": "ts-node-dev --rs src/index.ts",
     "start": "ts-node --transpile-only src/index"
