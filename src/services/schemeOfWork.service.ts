@@ -12,7 +12,11 @@ export const findSOWBy = async (by: string, value: any) => {
 };
 
 export const findSOWByFilter = async (filter: SOWFilter) => {
-  return await SOWModel.findOne(filter).populate(["subject", "class"]).exec();
+  return await SOWModel.findOne(filter)
+    .populate("subject")
+    .populate("class")
+    .populate("term")
+    .exec();
 };
 
 export const findSOWSByFilter = async (filter: SOWFilter) => {
@@ -62,7 +66,7 @@ export const getSOW = async (filter: SOWFilter) => {
       delete others[key];
     }
   });
-  return await findSOWSByFilter(filter);
+  return await findSOWByFilter(filter);
 };
 
 export const editSOW = async (id: string, body: CreateSOWInput) => {
