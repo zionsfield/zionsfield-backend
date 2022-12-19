@@ -3,9 +3,9 @@ import { NotFoundError } from "../errors/not-found-error";
 import { ClassModel } from "../models/classes.model";
 import { SOWModel } from "../models/schemeOfWork.model";
 import { SubjectModel } from "../models/subject.model";
+import { TermModel } from "../models/terms.model";
 import { CreateSOWInput } from "../schemas/schemeOfWork.schema";
 import { SOWFilter } from "../utils/typings.d";
-import { getCurrentTerm } from "./terms.service";
 
 export const findSOWBy = async (by: string, value: any) => {
   return await SOWModel.findOne({ [by]: value });
@@ -34,7 +34,7 @@ export const findSOWSByFilter = async (filter: SOWFilter) => {
 export const createSOW = async (body: CreateSOWInput) => {
   const classObj = await ClassModel.findById(body.class);
   const subjectObj = await SubjectModel.findById(body.subject);
-  const termObj = await getCurrentTerm();
+  const termObj = await TermModel.findById(body.term);
   if (!classObj) throw new NotFoundError("Class");
   if (!subjectObj) throw new NotFoundError("Subject");
   if (!termObj) throw new NotFoundError("Term");
@@ -72,7 +72,7 @@ export const getSOW = async (filter: SOWFilter) => {
 export const editSOW = async (id: string, body: CreateSOWInput) => {
   const classObj = await ClassModel.findById(body.class);
   const subjectObj = await SubjectModel.findById(body.subject);
-  const termObj = await getCurrentTerm();
+  const termObj = await TermModel.findById(body.term);
   const sow = await findSOWBy("_id", id);
   if (!classObj) throw new NotFoundError("Class");
   if (!subjectObj) throw new NotFoundError("Subject");

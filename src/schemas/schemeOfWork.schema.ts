@@ -4,6 +4,7 @@ export const createSOWSchema = object({
   body: object({
     class: string({ required_error: "Class is required" }),
     subject: string({ required_error: "Subject is required" }),
+    term: string({ required_error: "Term is required" }),
     content: string({ required_error: "Content is required" }),
   }),
 });
