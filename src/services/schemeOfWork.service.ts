@@ -70,19 +70,19 @@ export const getSOW = async (filter: SOWFilter) => {
 };
 
 export const editSOW = async (id: string, body: CreateSOWInput) => {
-  const classObj = await ClassModel.findById(body.class);
-  const subjectObj = await SubjectModel.findById(body.subject);
-  const termObj = await TermModel.findById(body.term);
+  // const classObj = await ClassModel.findById(body.class);
+  // const subjectObj = await SubjectModel.findById(body.subject);
+  // const termObj = await TermModel.findById(body.term);
   const sow = await findSOWBy("_id", id);
-  if (!classObj) throw new NotFoundError("Class");
-  if (!subjectObj) throw new NotFoundError("Subject");
-  if (!termObj) throw new NotFoundError("Term");
+  // if (!classObj) throw new NotFoundError("Class");
+  // if (!subjectObj) throw new NotFoundError("Subject");
+  // if (!termObj) throw new NotFoundError("Term");
   if (!sow) throw new NotFoundError("Scheme of Work");
   sow.set({
-    class: classObj.id,
-    subject: subjectObj.id,
+    // class: classObj.id,
+    // subject: subjectObj.id,
     content: body.content,
-    term: termObj.id,
+    // term: termObj.id,
   });
   return await sow.save();
 };
